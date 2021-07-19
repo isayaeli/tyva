@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'assets/css/style.css' %}"> -->
+
+    <link rel="stylesheet" href="{% static 'assets/vendors/iconly/bold.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/pages/email.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/vendors/perfect-scrollbar/perfect-scrollbar.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/bootstrap-icons/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/app.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/pages/auth.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/cal.css' %}">
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+</head>
+
+<body style="background-color: #fcf9ec;">
+
+  
+    <div id="app">
+        
+  
+        {% block nav %}
+        <div id="sidebar" class="active">
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <div class="d-flex justify-content-between">
+                        <div class="logo">
+                            <a href="{% url 'home' %}"><img style="width: 200px; height:150px;" src="{% static 'assets/images/logo/logo1.png' %} " alt="Logo" srcset=""></a>
+                        </div>
+                        <div class="toggler">
+                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <li class="sidebar-title">Welcome {{ user.username|capfirst }}</li>
+
+                        <li class="sidebar-item active ">
+                            <a href="{% url 'home' %}" class='sidebar-link'>
+                                <i class="bi bi-house-fill"></i>
+                                <span>Home</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-folder-fill"></i>
+                                <span>Task</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item ">
+                                    <a href="{% url 'add_task' %}">New Task</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="{% url 'assign_task' %}">Assign Task</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="{% url 'calendar' %}" class='sidebar-link'>
+                                <i class="bi bi-calendar2-fill event"></i>
+                                <span>Calendar</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="{% url 'emails' %}" class='sidebar-link'>
+                                <i class="bi bi-mailbox2"></i>
+                                <span>Email</span>
+                                <span style="border-radius: 20px;" class="badge bg-danger">2</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="{% url 'chat' %}" class='sidebar-link'>
+                                <i class="bi bi-envelope-fill open"></i>
+                                <span>Chat</span>
+                                <span style="border-radius: 20px;" class="badge bg-danger">9</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-calendar2-fill event"></i>
+                                <span>Departments</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item ">
+                                    <a href="extra-component-avatar.html">Thematic Areas</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="#">Programs</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-lock-fill"></i>
+                                <span>Security</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item ">
+                                    <a href="extra-component-avatar.html">Change Password</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="{% url 'logout' %}">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+            </div>
+        </div>
+        {% endblock nav %}
+
+
+
+
+        {% block contents %}
+        {% endblock contents %}
+
+            <footer class="mr-4">
+          <div class="container">
+            <div class="footer fixed-bottom clearfix mb-0 text-muted">
+                <div class="container">
+                    <div class="float-start">
+                        <p>2021 &copy; TYVA</p>
+                    </div>
+                    <div class="float-end">
+                        <p>Crafted By <a href="https://www.ennovatehub.com">Ennovatehub</a></p>
+                    </div>
+                </div>
+              </div>
+          </div>
+          </footer>
+      </div>
+  </div>
+
+
+  <script src="{% static 'assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+  <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+  <script src="{% static 'assets/vendors/apexcharts/apexcharts.js' %}"></script>
+  <script src="{% static 'assets/js/pages/dashboard.js' %}"></script>
+  <script src="{% static 'assets/vendors/tinymce/tinymce.min.js' %}"></script>
+  <script src="{% static 'assets/vendors/tinymce/plugins/code/plugin.min.js' %}"></script>
+  <script>
+      tinymce.init({ selector: '#default' });
+      tinymce.init({ selector: '#dark', toolbar: 'undo redo styleselect bold italic alignleft aligncenter alignright bullist numlist outdent indent code', plugins: 'code' });
+  </script>
+
+
+  
+
+
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

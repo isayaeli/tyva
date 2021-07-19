@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contents %}
+        <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+
+            <div class="page-heading">
+                <!-- <h3>{{ request.user.username|capfirst }}'s Timeline</h3> -->
+            </div>
+            <div class="page-content">
+                <section class="row">
+                    <div class="col-12 col-lg-9">
+                      <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>Update Task</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <form  method="POST" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <div class="row mt-4">
+                                                <div class="col-md-6">
+                                                    {{form.task_title}}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {{ form.priority}}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-4">
+                                                <div class="col-md-6">
+                                                     {{form.due_date}}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {{ form.task_status}}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-4">
+                                                <div class="col-md-12">
+                                                    {{ form.task_todos|safe }}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-4">
+                                                <div class="col-md-6">
+                                                    <button type="submit" class="btn btn-primary  rounded-pill">Update</button>
+                                                    <button type="submit" class="btn btn-secondary btn-sm  rounded-pill">Cancel</button>
+                                                </div>
+                                            </div>
+                                        
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+
+ 
+{% endblock contents %}

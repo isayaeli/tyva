@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contents %}
+        <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+
+            <div class="page-heading">
+                <h3>Select Who to Assign Task</h3>
+            </div>
+            <div class="page-content">
+                <section class="row">
+                    <div class="col-12 col-lg-9">
+                        <div class="row">
+                            {% for data in profiles|dictsort:"user.username" %}
+                                {% if data.user.username != request.user.username %}
+                                    <div class="col-6 col-lg-3 col-md-6">
+                                        <div class="card">
+                                            <div class="card-body px-3 py-4-5">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="avatar avatar-xl">
+                                                            {% if data.image %}
+                                                                <img src="{{ data.image.url }}" alt="Face 1">
+                                                            {% else %}
+                                                                <img src="{% static 'assets/images/faces/1.jpg' %}" alt="Face 1">
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8 mt-2">
+                                                        <h6 class="text-muted font-semibold">
+                                                            {% if data.user.first_name  %}
+                                                            {{ data.user.first_name }}
+                                                            {% else %}
+                                                            <span>............</span>
+                                                            {% endif %}</h6>
+                                                        <a href="{% url 'timeline' data.slug %}"><h6 class="font-extrabold mb-0">@{{ data.user.username}}</h6></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                    <!-- <div class="col-12 col-lg-3">
+                        <div class="card">
+                            <div class="card-body py-4 px-5">
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar avatar-xl">
+                                        {% if request.user.profile.image %}
+                                        <img src="{{ request.user.profile.image.url }}" alt="Face 1">
+                                        {% else %}
+                                        <img src="{% static 'assets/images/faces/1.jpg' %}" alt="Face 1">
+                                        {% endif %}
+                                    </div>
+                                    <div class="ms-3 name">
+                                        <h6 class="font-bold">{{ request.user.first_name }} {{ request.user.last_name }}</h6>
+                                        <a href="{% url 'timeline' request.user.username %}"><h5 class="text-muted mb-0">@{{ request.user.username }}</h5></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+             
+                    </div> -->
+                </section>
+            </div>
+
+{% endblock contents %}
